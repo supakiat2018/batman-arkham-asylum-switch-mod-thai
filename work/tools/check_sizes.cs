@@ -1,0 +1,32 @@
+
+using System;
+
+class CheckSizes
+{
+    static void Main()
+    {
+        var pStart = Package.Load(@"C:\Users\Supakiat\Downloads\Compressed\Batman Arkham Asylum\romfs\BmGame\CookedSwitch\Startup.xxx");
+        Console.WriteLine("=== Startup.xxx ===");
+        int[] sExps = { 4, 5, 6, 7, 8, 9, 20, 21 };
+        foreach (int exp in sExps)
+        {
+            var bf = BmFontData.Load(pStart, exp);
+            int hIdx = bf.Remap.ContainsKey('H') ? bf.Remap['H'] : -1;
+            int hH = hIdx >= 0 ? bf.Chars[hIdx].H : 0;
+            string name = pStart.Exports[exp - 1].Name;
+            Console.WriteLine(string.Format("Exp {0} ({1}): chars={2}, 'H' height={3}", exp, name, bf.Chars.Count, hH));
+        }
+
+        var pCg = Package.Load(@"C:\Users\Supakiat\Downloads\Compressed\Batman Arkham Asylum\romfs\BmGame\CookedSwitch\CommonGame_LOC_INT.xxx");
+        Console.WriteLine("\n=== CommonGame_LOC_INT.xxx ===");
+        int[] cExps = { 1, 2, 3, 4 };
+        foreach (int exp in cExps)
+        {
+            var bf = BmFontData.Load(pCg, exp);
+            int hIdx = bf.Remap.ContainsKey('H') ? bf.Remap['H'] : -1;
+            int hH = hIdx >= 0 ? bf.Chars[hIdx].H : 0;
+            string name = pCg.Exports[exp - 1].Name;
+            Console.WriteLine(string.Format("Exp {0} ({1}): chars={2}, 'H' height={3}", exp, name, bf.Chars.Count, hH));
+        }
+    }
+}

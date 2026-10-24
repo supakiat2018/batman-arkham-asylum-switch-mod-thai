@@ -1,0 +1,39 @@
+# Game dumps and unpacked ROM archives (tens of gigabytes)
+romfs/
+exefs/
+nsp/
+modthai/
+work/decompressed/
+work/output/
+
+# Binaries and compiled assets
+*.xxx
+*.upk
+*.nsp
+*.bin
+*.exe
+*.dll
+*.obj
+*.pdb
+*.png
+*.ttf
+
+# Logs and scratch output
+*.log
+work/tools/*.txt
+work/tools/*.bin
+work/tools/*.png
+work/tools/*.exe
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Explicitly keep essential documentation and translation data
+!README.md
+!Mapping.json
+!switch_untranslated_subtitles.csv
+!work/data/subs.tsv
+!work/data/ui.tsv
+!work/data/manifest.tsv
+!work/data/nobreak.txt
